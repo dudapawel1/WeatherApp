@@ -1,0 +1,20 @@
+{if current_weather %}
+<h2>Weather in {{ current_weather.city }}, {{ current_weather.country }}</h2>
+<p>Temperature: {{ current_weather.temperature }}°C</p>
+<p>Condition: {{ current_weather.description }}</p>
+<img src="http://openweathermap.org/img/wn/{{ current_weather.icon }}@2x.png" alt="Weather icon">
+{% endif %}
+
+{if daily_forecast %}
+<h2>5-Day Forecasts</h2>
+<div class="forecast-container">
+    {% for forecast in daily_forecast %}
+    <div class="forecast">
+        <h3>{{forecast.date}}</h3>
+        <p>{{forecast.min.temperature}}C-{{forecast.max.temperature}}C</p>
+        <p>{{forecast.description}}</p>
+        <img src="http://openweathermap.org/img/w/{{forecast.icon}}.png" alt="{{forecast.description}}">
+    </div>
+    {% endif %}
+</div>
+{% endif %}
